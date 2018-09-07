@@ -1,0 +1,4 @@
+http://ec2-34-196-144-65.compute-1.amazonaws.com:8080/api/v1/clusters/WIPRO_BDA/hosts/ip-172-31-24-170.ec2.internal?fields=Hosts/host_name,metrics/cpu,metrics/memory,metrics/disk
+http://ec2-34-196-144-65.compute-1.amazonaws.com:8080/api/v1/clusters/WIPRO_BDA/hosts/ip-172-31-28-247.ec2.internal?fields=Hosts/host_name,metrics/cpu,metrics/memory,metrics/disk
+http://ec2-34-196-144-65.compute-1.amazonaws.com:8080/api/v1/clusters/WIPRO_BDA/hosts/ip-172-31-29-55.ec2.internal?fields=Hosts/host_name,metrics/cpu,metrics/memory,metrics/disk
+http://ec2-34-196-144-65.compute-1.amazonaws.com:8080/api/v1/clusters/WIPRO_BDA/hosts/ip-172-31-31-241.ec2.internal?fields=Hosts/host_name,metrics/cpu,metrics/memory,metrics/disk

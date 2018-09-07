@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS FinishedJobs (id String,name String, queue String, user String, state String, submitTime bigint, startTime bigint, finishTime bigint,avgMapTime bigint,avgMapTime bigint, avgReduceTime bigint, avgShuffleTime bigint, avgMergeTime bigint, gcTime bigint, usedMemory bigint, timeSpentMaps bigint, timeSpentReducers bigint, timeSpentTotal bigint, timestamp TIMESTAMP )
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE;
+
+
+
+CREATE TABLE IF NOT EXISTS RunningJobs (applicationId String,applicationName String, applicationState String, applicationType String, finalState String, progress String, username String, queueName String , startTime bigint, elapsedTime bigint, finishTime bigint, trackingUrl String, numContainers int, allocatedMB int, allocatedVCores int, memorySeconds bigint, vcoreSeconds bigint , timestamp TIMESTAMP)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE;
+
+
+CREATE TABLE IF NOT EXISTS finishedJobsInfo (queueName String, maxCapacity bigint, usedMemory int, usedCores int, numContainers int, queueState String, maxApplications int, numApplications int, numActiveApplications int, numPendingApplications int , queueType String, users String, timestamp TIMESTAMP)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘\t’
+LINES TERMINATED BY ‘\n’
+STORED AS TEXTFILE;
+
+
