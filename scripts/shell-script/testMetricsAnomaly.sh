@@ -44,6 +44,7 @@ then
        #echo "trigger mail" > debugmail.txt
        echo $(date +%s) > mailTrigger.txt
        echo "!!! Platform Monitoring Alert !!!" | mail -s "Anomaly Detected" -a anomalyResult_$today.txt rajadurai.ramar@wipro.com
+       mv anomalyResult_$today.txt ./archive_anomaly/
     fi 
 else
     echo "No Anomaly Detected"

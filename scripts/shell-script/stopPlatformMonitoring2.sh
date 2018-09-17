@@ -4,7 +4,7 @@ LOG_DIR="/home/ec2-user/platform-monitor/log"
 rm -rf $LOG_DIR/stop.out
 
 # kill hadoop monitor java process
-for PID in `ps -eaf | grep DataFetcherMain | grep -v grep | awk '{print $2}'`
+for PID in `ps -eaf | grep hadoopmonitor | grep -v grep | awk '{print $2}'`
 do
    echo  "killing hadoopmonitor java process" | tee -a $LOG_DIR/stop.out
    sudo kill -9 $PID
