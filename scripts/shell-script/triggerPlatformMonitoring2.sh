@@ -15,7 +15,8 @@ then
    sudo service grafana-server start
 fi
 
-HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor-1.0-SNAPSHOT.jar | grep -v grep | wc -l)
+#HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor-1.0-SNAPSHOT.jar | grep -v grep | wc -l)
+HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor.jar | grep -v grep | wc -l)
 echo $HADOOP_MONITOR_PGM_CHECK | tee -a $LOG_DIR/trigger.out
 
 if [ $HADOOP_MONITOR_PGM_CHECK -eq 0 ]
@@ -23,8 +24,10 @@ then
     #mysql --silent -h ip-172-31-28-247.ec2.internal -u root -P 3306 -pbdre@1234 -D PlatformMonitor -e "truncate table FinishedInfo"
     cd /home/ec2-user/platform-monitor/HadoopMonitoring
     rm -rf nohup.out
-    nohup java -cp target/hadoopmonitor-1.0-SNAPSHOT.jar com.wipro.analytics.fetchers.DataFetcherMain &
-    HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor-1.0-SNAPSHOT.jar | grep -v grep | wc -l)
+    #nohup java -cp target/hadoopmonitor-1.0-SNAPSHOT.jar com.wipro.analytics.fetchers.DataFetcherMain &
+    nohup java -jar target/hadoopmonitor.jar
+    #HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor-1.0-SNAPSHOT.jar | grep -v grep | wc -l)
+    HADOOP_MONITOR_PGM_CHECK=$(ps -aux | grep hadoopmonitor.jar | grep -v grep | wc -l)
     if [ $HADOOP_MONITOR_PGM_CHECK -ne 0 ] 
     then
        echo "Hadoop Monitor Java Program is STARTING  !!!" | tee -a $LOG_DIR/trigger.out
