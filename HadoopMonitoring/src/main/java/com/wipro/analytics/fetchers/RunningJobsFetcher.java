@@ -132,7 +132,9 @@ public class RunningJobsFetcher {
                 }
             }*/
 
-        } catch (Exception e) {
+        } 
+		catch (Exception e) 
+		{
             System.out.println("e = " + e);
             e.printStackTrace();
         }
