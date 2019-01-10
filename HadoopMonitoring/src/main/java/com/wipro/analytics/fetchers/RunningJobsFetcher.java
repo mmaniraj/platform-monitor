@@ -32,7 +32,8 @@ public class RunningJobsFetcher {
     private final static String runningJobsAggregatedDir = DataFetcherMain.RUNNING_JOBS_AGGREGATED_DIR;
     private final static String resourceManagerHost = DataFetcherMain.RESOURCE_MANAGER_HOST;
     private final static String resourceManagerPort = DataFetcherMain.RESOURCE_MANAGER_PORT;
-    private static final long scheduleInterval = DataFetcherMain.SCHEDULE_INTERVAL;
+    // private static final long scheduleInterval = DataFetcherMain.SCHEDULE_INTERVAL;
+    private static final long scheduleInterval = 30;
     private static final long aggregationInterval = DataFetcherMain.AGGREGATION_INTERVAL;
     private static final String lineSeparator = DataFetcherMain.FILE_LINE_SEPERATOR;
     private static final String runningJobsTable = DataFetcherMain.RUNNING_JOBS_TABLE;

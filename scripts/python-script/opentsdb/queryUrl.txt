@@ -1,2 +1,1 @@
-http://ec2-52-204-70-138.compute-1.amazonaws.com:4242/api/query?start=1w-ago&m=sum:cpu_user{host=*}&m=sum:cpu_system{host=*}&m=sum:cpu_idle{host=*}&m=sum:mem_free{host=*}&m=sum:mem_total{host=*}&m=sum:mem_cached{host=*}
-
+http://10.201.45.15:4242/api/query?start=1w-ago&m=sum:cpu_user{host=*}&m=sum:cpu_system{host=*}&m=sum:cpu_idle{host=*}&m=sum:mem_free{host=*}&m=sum:mem_total{host=*}&m=sum:mem_cached{host=*r}

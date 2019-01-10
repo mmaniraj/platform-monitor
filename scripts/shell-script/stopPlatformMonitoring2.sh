@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_DIR="/home/ec2-user/platform-monitor/log"
+LOG_DIR="/home/openbdre/platform-monitor/log"
 rm -rf $LOG_DIR/stop.out
 
 # kill hadoop monitor java process
@@ -34,4 +34,3 @@ done
 sleep 15
 
 echo "Platform Monitoring is successfully SHUT DOWN !!!" | tee -a $LOG_DIR/stop.out
-

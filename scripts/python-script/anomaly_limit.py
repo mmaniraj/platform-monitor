@@ -19,9 +19,9 @@ def compute_boundary_limit(metricsValArray,metric):
 def submitDetailstoDB(metric,host,lbound,ubound): 
 	print "mysql connect for :",metric
 	mydb = mysql.connector.connect(
-		host="ip-172-31-28-247.ec2.internal",
+		host="10.201.45.15",
 		user="root",
-		passwd="bdre@1234",
+		passwd="wipro@123",
 		database="PlatformMonitor"
 	)
 	mycursor = mydb.cursor()
@@ -37,9 +37,9 @@ def submitDetailstoDB(metric,host,lbound,ubound):
 def archiveToHistory(): 
 	print "mysql connect for archiving"
 	mydb = mysql.connector.connect(
-		host="ip-172-31-28-247.ec2.internal",
+		host="10.201.45.15",
 		user="root",
-		passwd="bdre@1234",
+		passwd="wipro@123",
 		database="PlatformMonitor"
 	)
 	mycursor = mydb.cursor()
@@ -70,7 +70,7 @@ def archiveToHistory():
 	
 
 archiveToHistory()
-file=open("/home/ec2-user/platform-monitor/scripts/python-script/opentsdb/queryUrl.txt","r")
+file=open("/home/openbdre/platform-monitor/scripts/python-script/opentsdb/queryUrl.txt","r")
 url=file.read()
 response = urllib.urlopen(url)
 data = json.loads(response.read())

@@ -9,11 +9,8 @@ import java.io.*;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by SR294224 on 3/20/2017.
- */
-public class DataFetcherMain {
-
+public class DataFetcherMain 
+{
     public static String FOLDERS_TO_MONITOR_FOR_HDFS_QUOTA;
     public static long START_DELAY;
     public static long SCHEDULE_INTERVAL;
@@ -56,14 +53,17 @@ public class DataFetcherMain {
     public static String GANGLIA_METRICS_TABLE;
 
 
-    public static void main(String args[]) {
-        try {
+    public static void main(String args[]) 
+    {
+        try 
+	{
             init();
             //checking if any aggregated data is present before restart
-           /* Configuration conf = new Configuration();
+            /* Configuration conf = new Configuration();
             conf.set("fs.defaultFS", "hdfs://" + NAMENODE_HOST + ":" + NAMENODE_PORT);
 
-            try {
+            try 
+	    {
                 FileSystem fs = FileSystem.get(conf);
                 File directory = new File(QUEUES_AGGREGATED_DIR);
                 if (! directory.exists()){
@@ -126,27 +126,32 @@ public class DataFetcherMain {
                 e.printStackTrace();
             }*/
 
-
-             FinishedJobsFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
-              RunningJobsFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
-             QueueFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
-             HDFSQuotaFetcher2.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
-             MRTasksFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
+            FinishedJobsFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
+            //RunningJobsFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
+	    RunningJobsFetcher.schedule(START_DELAY, 30, TIMEUNIT_FOR_SCHEDULE);
+            QueueFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
+            HDFSQuotaFetcher2.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
+            MRTasksFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
             //GangliaMetricsFetcher.schedule(START_DELAY, SCHEDULE_INTERVAL, TIMEUNIT_FOR_SCHEDULE);
-        }catch (Exception e){
-            e.printStackTrace();
         }
-        finally {
+	catch (Exception e)
+	{
+            e.printStackTrace();
+	}
+	finally 
+	{
 
         }
     }
 
-    public static void init() {
+    public static void init() 
+    {
         Properties properties = new Properties();
         InputStream input = null;
 
-        try {
-            input = new FileInputStream("/home/ec2-user/platform-monitor/HadoopMonitoring/src/main/java/com/wipro/analytics/config.properties");
+        try 
+	{
+            input = new FileInputStream("/home/openbdre/platform-monitor/HadoopMonitoring/src/main/java/com/wipro/analytics/config.properties");
             properties.load(input);
 
             // get the properties value
@@ -190,19 +195,24 @@ public class DataFetcherMain {
             SCHEDULE_INTERVAL_GANGLIA= Long.parseLong(properties.getProperty("SCHEDULE_INTERVAL_GANGLIA"));
             GANGLIA_METRIC_FILE= properties.getProperty("GANGLIA_METRIC_FILE");
             GANGLIA_METRICS_TABLE= properties.getProperty("GANGLIA_METRICS_TABLE");
-
-
-        } catch (IOException io) {
+        } 
+	catch (IOException io) 
+	{
             io.printStackTrace();
-        } finally {
-            if (input != null) {
-                try {
+        } 
+	finally 
+	{
+		if (input != null) 
+		{
+                try 
+		{
                     input.close();
-                } catch (IOException e) {
+                } 
+		catch (IOException e) 
+		{
                     e.printStackTrace();
                 }
             }
-
         }
     }
 }
